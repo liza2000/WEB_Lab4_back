@@ -1,6 +1,5 @@
 package main.java.controller;
-
-
+import main.java.PointService;
 import main.java.repositories.PointRepository;
 import main.java.repositories.UserRepository;
 import main.java.model.Calculator;
@@ -16,11 +15,12 @@ import java.util.List;
         private final PointRepository pointRepository;
         private final UserRepository userRepository;
         private final Calculator calculator;
-
-        PointController(PointRepository pointRepository, UserRepository userRepository) {
+        private final PointService pointService;
+        PointController(PointRepository pointRepository, UserRepository userRepository, PointService pointService) {
             this.pointRepository = pointRepository;
             this.calculator = new Calculator();
             this.userRepository = userRepository;
+            this.pointService = pointService;
         }
 
         @CrossOrigin
@@ -36,6 +36,7 @@ import java.util.List;
             if (newPoint.getR()<0) return null;
             newPoint.setInArea(calculator.isInArea(newPoint));
             System.out.println(user);
+            pointService.count(newPoint);
             newPoint.setUser(userRepository.findByUsername(user.getName()));
             return pointRepository.save(newPoint);
         }
@@ -52,6 +53,7 @@ import java.util.List;
                 point.setInArea(calculator.isInArea(point));
                 recalculated.add(point);
             }
+            pointService.calculateSquare(r);
             return recalculated;
         }
 }

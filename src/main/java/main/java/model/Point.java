@@ -42,7 +42,7 @@ public class Point {
         return r;
     }
 
-    public Boolean getInArea() {
+    public Boolean isInArea() {
         return isInArea;
     }
 
