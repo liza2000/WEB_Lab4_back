@@ -10,7 +10,7 @@ public class PointCounter extends NotificationBroadcasterSupport implements Poin
     private int countTruePoints;
     private int sq;
 
-    public void count(Point point){
+    public void refresh(Point point){
         countPoints++;
         if(point.isInArea()) countTruePoints++;
         if(Math.abs(point.getX())>5.8||Math.abs(point.getY())>5.8)

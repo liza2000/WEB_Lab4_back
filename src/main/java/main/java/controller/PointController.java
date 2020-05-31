@@ -36,7 +36,7 @@ import java.util.List;
             if (newPoint.getR()<0) return null;
             newPoint.setInArea(calculator.isInArea(newPoint));
             System.out.println(user);
-            pointService.count(newPoint);
+            pointService.refresh(newPoint);
             newPoint.setUser(userRepository.findByUsername(user.getName()));
             return pointRepository.save(newPoint);
         }

@@ -26,8 +26,8 @@ public class PointService {
         }
     }
 
-    public void count(Point point) {
-        pointCounter.count(point);
+    public void refresh(Point point) {
+        pointCounter.refresh(point);
     }
 
     public void calculateSquare(double r) {
